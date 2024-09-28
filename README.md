@@ -25,10 +25,11 @@ missing_df = complete_df.copy()
 missingness_prop = 0.1  # 10% missing values
 missing_mask = np.random.rand(*missing_df.shape) < missingness_prop
 missing_df[missing_mask] = np.nan
+```
 
 ### 2. Visualize Missing Data
 We visualize the missing data in the missing_df using a heatmap:
-
+```python
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -36,6 +37,7 @@ import matplotlib.pyplot as plt
 sns.heatmap(missing_df.isnull(), cbar=False, yticklabels=False, cmap='viridis')
 plt.title('Missing Values Heatmap')
 plt.show()
+```
 
 ###3. Perform Imputation using Various Algorithms
 We will apply different imputation methods to handle missing values:
@@ -52,7 +54,9 @@ We will apply different imputation methods to handle missing values:
 10.Hot-Deck Imputation (custom method needed)
 We will apply different imputation methods to handle missing values:
 
+```python
 !pip install scikit-learn fancyimpute tensorflow
+```
 
 Below is the implementation of the imputation methods:
 
