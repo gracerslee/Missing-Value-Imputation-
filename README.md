@@ -186,8 +186,15 @@ def impute_and_evaluate(df, complete_df):
 
 impute_and_evaluate(missing_df, complete_df)
 ```
+### Notes:
+1. DNN Imputation: This method can be complex and is typically not necessary for basic missing value imputation.
+2. Hot-Deck Imputation: Requires custom implementation based on similar rows.
 
-
+### License
+MIT License 
+```vbnet
+This README file provides clear step-by-step instructions using Markdown formatting to document the Python code, visualization, and imputation methods.
+```
 
 
 
