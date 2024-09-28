@@ -60,6 +60,7 @@ from sklearn.impute import SimpleImputer, KNNImputer
 from fancyimpute import IterativeImputer  # For MICE
 
 # Imputation functions
+```python
 def mean_imputation(df):
     imputer = SimpleImputer(strategy='mean')
     return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
@@ -87,8 +88,111 @@ def knn_imputation(df, n_neighbors=5):
 def mice_imputation(df):
     imputer = IterativeImputer()
     return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+```
 
 ### 4. Compare and Evaluate the Performance of Algorithms
 To compare the performance of the imputation methods, we calculate the RMSE between the imputed data and the original data:
+```python
+from sklearn.metrics import mean_squared_error
+
+def evaluate_imputation(original_df, imputed_df):
+    # Only compare non-missing values to the original data
+    mask = original_df.notna()
+    mse = mean_squared_error(original_df[mask], imputed_df[mask])
+    return np.sqrt(mse)
+```
+Apply the imputation methods and compute the RMSE:
+```python
+methods = {
+    'Mean Imputation': mean_imputation,
+    'Median Imputation': median_imputation,
+    'Most Frequent Value Imputation': most_frequent_imputation,
+    'Zero Imputation': zero_imputation,
+    'Constant Imputation (e.g., -1)': lambda df: constant_imputation(df, -1),
+    'K-NN Imputation': knn_imputation,
+    'MICE Imputation': mice_imputation,
+}
+
+results = {}
+for method_name, imputation_func in methods.items():
+    imputed_df = imputation_func(missing_df)
+    rmse = evaluate_imputation(complete_df, imputed_df)
+    results[method_name] = rmse
+
+# Find the best method
+best_method = min(results, key=results.get)
+print(f"Best imputation method: {best_method} with RMSE: {results[best_method]}")
+```
+### 5.Visualize the Results 
+The RMSE scores of each method can be visualized using a bar plot:
+```python
+plt.figure(figsize=(10, 6))
+sns.barplot(x=list(results.keys()), y=list(results.values()))
+plt.title('RMSE of Different Imputation Methods')
+plt.xticks(rotation=45)
+plt.ylabel('RMSE')
+plt.show()
+```
+### 6. Export the Best Imputed Data 
+After determining the best imputation method, the imputed DataFrame can be exported as a CSV file:
+```python
+best_imputed_df = methods[best_method](missing_df)
+best_imputed_df.to_csv('best_imputed_data.csv', index=False)
+print("Best imputed data exported to 'best_imputed_data.csv'.")
+```
+### 7. Wrap Everything in a Single Function 
+Finally, all the steps are wrapped into a single function for easy reuse:
+```python
+def impute_and_evaluate(df, complete_df):
+    # Visualize missing values
+    sns.heatmap(df.isnull(), cbar=False, yticklabels=False, cmap='viridis')
+    plt.title('Missing Values Heatmap')
+    plt.show()
+
+    # Dictionary of imputation methods
+    methods = {
+        'Mean Imputation': mean_imputation,
+        'Median Imputation': median_imputation,
+        'Most Frequent Value Imputation': most_frequent_imputation,
+        'Zero Imputation': zero_imputation,
+        'Constant Imputation (-1)': lambda df: constant_imputation(df, -1),
+        'K-NN Imputation': knn_imputation,
+        'MICE Imputation': mice_imputation,
+    }
+
+    # Evaluate methods
+    results = {}
+    for method_name, imputation_func in methods.items():
+        imputed_df = imputation_func(df)
+        rmse = evaluate_imputation(complete_df, imputed_df)
+        results[method_name] = rmse
+
+    # Find the best method
+    best_method = min(results, key=results.get)
+    print(f"Best imputation method: {best_method} with RMSE: {results[best_method]}")
+
+    # Plot RMSE
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x=list(results.keys()), y=list(results.values()))
+    plt.title('RMSE of Different Imputation Methods')
+    plt.xticks(rotation=45)
+    plt.ylabel('RMSE')
+    plt.show()
+
+    # Export the best imputed data
+    best_imputed_df = methods[best_method](df)
+    best_imputed_df.to_csv('best_imputed_data.csv', index=False)
+    print("Best imputed data exported to 'best_imputed_data.csv'.")
+
+impute_and_evaluate(missing_df, complete_df)
+```
+
+
+
+
+
+
+
+
 
 
