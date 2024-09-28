@@ -54,8 +54,41 @@ We will apply different imputation methods to handle missing values:
 ```python
 !pip install scikit-learn fancyimpute tensorflow
 ```
-
 Below is the implementation of the imputation methods:
 
+from sklearn.impute import SimpleImputer, KNNImputer
+from fancyimpute import IterativeImputer  # For MICE
+
+# Imputation functions
+def mean_imputation(df):
+    imputer = SimpleImputer(strategy='mean')
+    return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+def median_imputation(df):
+    imputer = SimpleImputer(strategy='median')
+    return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+def most_frequent_imputation(df):
+    imputer = SimpleImputer(strategy='most_frequent')
+    return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+def zero_imputation(df):
+    imputer = SimpleImputer(strategy='constant', fill_value=0)
+    return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+def constant_imputation(df, fill_value):
+    imputer = SimpleImputer(strategy='constant', fill_value=fill_value)
+    return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+def knn_imputation(df, n_neighbors=5):
+    imputer = KNNImputer(n_neighbors=n_neighbors)
+    return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+def mice_imputation(df):
+    imputer = IterativeImputer()
+    return pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+### 4. Compare and Evaluate the Performance of Algorithms
+To compare the performance of the imputation methods, we calculate the RMSE between the imputed data and the original data:
 
 
