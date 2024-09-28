@@ -123,7 +123,7 @@ for method_name, imputation_func in methods.items():
 best_method = min(results, key=results.get)
 print(f"Best imputation method: {best_method} with RMSE: {results[best_method]}")
 ```
-### 5.Visualize the Results 
+### 5. Visualize the Results 
 The RMSE scores of each method can be visualized using a bar plot:
 ```python
 plt.figure(figsize=(10, 6))
