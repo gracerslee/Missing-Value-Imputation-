@@ -1,0 +1,66 @@
+Imputation Evaluation Report
+===========================
+
+Method: Mean Imputation
+  Mean Deviation:     0.0384
+  Variance Deviation: 0.1484
+  PCA Distance:       1.8566
+  t-SNE Distance:     13.0171
+  UMAP Distance:      2.8351
+
+Method: Median Imputation
+  Mean Deviation:     0.0387
+  Variance Deviation: 0.1483
+  PCA Distance:       1.8565
+  t-SNE Distance:     12.8383
+  UMAP Distance:      2.8512
+
+Method: Most Frequent Value Imputation
+  Mean Deviation:     0.3223
+  Variance Deviation: 0.7824
+  PCA Distance:       2.2434
+  t-SNE Distance:     13.7274
+  UMAP Distance:      2.7958
+
+Method: Zero Imputation
+  Mean Deviation:     0.0386
+  Variance Deviation: 0.1483
+  PCA Distance:       1.8568
+  t-SNE Distance:     12.5979
+  UMAP Distance:      2.8300
+
+Method: Constant Imputation (e.g., -1)
+  Mean Deviation:     0.1011
+  Variance Deviation: 0.0612
+  PCA Distance:       1.9061
+  t-SNE Distance:     12.6300
+  UMAP Distance:      2.8596
+
+Method: K-NN Imputation
+  Mean Deviation:     0.0412
+  Variance Deviation: 0.1297
+  PCA Distance:       1.8874
+  t-SNE Distance:     13.0673
+  UMAP Distance:      2.8244
+
+Method: MICE Imputation
+  Mean Deviation:     0.0384
+  Variance Deviation: 0.1484
+  PCA Distance:       1.8573
+  t-SNE Distance:     12.3282
+  UMAP Distance:      2.8782
+
+Method: Transformer Imputation
+  Mean Deviation:     0.0535
+  Variance Deviation: 0.1571
+  PCA Distance:       1.8465
+  t-SNE Distance:     15.1196
+  UMAP Distance:      2.8656
+
+Method: AutoEncoder Imputation
+  Mean Deviation:     0.0396
+  Variance Deviation: 1.0432
+  PCA Distance:       1.4444
+  t-SNE Distance:     15.3030
+  UMAP Distance:      3.1515
+
