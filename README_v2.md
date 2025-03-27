@@ -69,7 +69,7 @@ Upon running, the following files will be saved in the report/ directory:
 * best_method_comparison.png: Side-by-side visualization (Original vs Imputed)
 
 ✅ Best Method Selection
-The best-performing imputation method is selected based on the lowest average score across all five evaluation metrics. Final visual comparison of the original vs. imputed data is generated using PCA, t-SNE, and UMAP projections.
+* The best-performing imputation method is selected based on the lowest average score across all five evaluation metrics. Final visual comparison of the original vs. imputed data is generated using PCA, t-SNE, and UMAP projections.
 
                                                               
 ### Notes:
