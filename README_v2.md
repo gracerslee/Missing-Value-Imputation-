@@ -26,17 +26,18 @@ plt.show()
 
 ### 3. Imputation Methods
 🧮 Traditional Methods:
-1) Mean Imputation
-2) Median Imputation
-3) Most Frequent Value
-4) Zero Imputation
-5) Constant Value (e.g., -1)
-6) K-NN Imputation
-7) MICE (Multivariate Imputation by Chained Equations)
+* Mean Imputation
+* Median Imputation
+* Most Frequent Value
+* Zero Imputation
+* Constant Value (e.g., -1)
+* K-NN Imputation
+* MICE (Multivariate Imputation by Chained Equations)
 
 🤖 Deep Learning Methods:
-8) Transformer-based Imputation (Custom Transformer Encoder)
-9) AutoEncoder-based Imputation                                                          
+* Transformer-based Imputation (Custom Transformer Encoder)
+* AutoEncoder-based Imputation
+                                                     
 Each method is implemented and applied using ImputationEvaluator.
       
 ### 4. Evaluation Metrics
